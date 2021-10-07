@@ -18,7 +18,7 @@ The primary objective of this project is to find out a priority list for home im
 
 A real-world dataset that contains house sale price information and the corresponding house features of King County, Washington from 2014 to 2015 will be used. It is originated from Kaggle, and can be imported to R from `mlr3data` package. 
 
-Basically, there are 21,613 observations along with 19 house features such as the number of bathrooms, bedrooms, floors, and square footage of the housein the original data. The code that help us load the data and print the fisrt few lines of the original data is shown as below
+Basically, there are 21,613 observations along with 19 house features such as the number of bathrooms, bedrooms, floors, and square footage of the house in the original data. The code that help us load the data and print the fisrt few lines of the original data is shown as below
 
 ```{r}
 ## Load the required dataset
