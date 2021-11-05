@@ -1,15 +1,15 @@
-# CS510 Midterm Project
-Github Repository for CS 510 Project: Prediction of Aromatic Rings for Cancer Kinase Inhibitors Using Random Forest Model
+# CS_510_Midterm_Project
 
-Premise: SRC Kinase Inhibitors are important inhibitors for cancer proteins. A distincting factor of SRC Kinase Inhibitors and their existence is their ring count
-and it acts as a very important feature for these molecules. In this project, I plan on predicting aromatic ring count given a list of 20 aggregate chemical features 
-and using different machine learning models for comparison analysis. I start off by developing a basic Random Forest model and in the future, I will do a comparative 
-analysis of this Random Forest model and another model to see prediction accuracy and variance levels. 
+# Purpose
+The primary objective of this project is to find out a priority list for home improvement that can be helpful for boosting home values from a statistician’s view. Commonly used house attributes would be analyzed and the project would be planned to figure out the most relevant features of a house regarding sale prices. Hopefully, this project could offer some suggestions on house improvement and home value boosting for home investors during their stay.
 
-Data: SRC Kinase inhibitor Dataset(xlsx file)
+## How to Run
+Copy this repository and open **MidtProject.Rproj** in RStudio. 
 
-Output: Summary statistics of RF model on training and testing(variance level covered, rmse, etc)
+Open **Mid Project_Home values.Rmd**. Proceed to install all associated libraries and run each file.
 
-Details: Data contains ~3000 molecules with smile strings and ~20 aggregate chemical features
+## Data
+A real-world dataset that contains house sale price information and the corresponding house features of King County, Washington from 2014 to 2015 will be used. It is originated from Kaggle, and can be imported to R from mlr3data package. Basically, there are 21,613 observations along with 19 house features such as the number of bathrooms, bedrooms, floors, and square footage of the housein the original data. 
 
-All code is contained in the R notebook and if run, should contain comments and information on how to load dataset and what each step is doing and functioning. Make sure the dataset is in the same directory as the R notebook for the code to load dataset properly. 
+## Tests
+Tests are located in the **Tests** directory. The test checks to make sure the update function works correctly in **DonorSearch Aristotle.R**.
