@@ -1,6 +1,6 @@
 # CS_510_Midterm_Project_A Statistician’s Priority List for Boosting Home Value
 
-# Purpose
+## Purpose
 The primary objective of this project is to find out a priority list for home improvement that can be helpful for boosting home values from a statistician’s view. Commonly used house attributes would be analyzed and the project would be planned to figure out the most relevant features of a house regarding sale prices. Hopefully, this project could offer some suggestions on house improvement and home value boosting for home investors during their stay.
 
 ## How to Run
