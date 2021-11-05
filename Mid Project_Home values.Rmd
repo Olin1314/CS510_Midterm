@@ -245,6 +245,16 @@ The R-squared of this model is 0.711, which means this linear model containing t
 
 As we notice, here we used the log-transformation on the dependent variable because the variable is right skewed based on previous analysis. Hence, the model results imply that one additional point in the house grade is expected to increase the house price by 25.1% on average when other factors are assumed to be the same. And the house with a waterfront is expected to be 18.4% higher in price than the house without a waterfront when other conditions are the same. And an additional bathroom in a house is expected to bring up the home value by 4.3%, and with a one-sqft increase in the living room is expected to enhanced the house value by 0.01% on average conditional to all other factors respectively. As for the time of the house being viewed, it is shown that each time the house is viewed, the house value is expected to be boost by 4.4% on average.
 
+## Conclusion
+
+In conclusion, from a view of statistician, a priority list for boosting home value should contain the following two things:
+
+1. Try to maintain the house in a good condition and add more custom design so that it can be graded higher.
+
+2. Try to expand the space of living room in the house
+
+And if we want to use the easily collected house features to predict the house prices, a random forest model with 7 features being selected per tree and considers 500 trees at one time is recommended. Although it may not be precise, it can offer a general idea of how valuable the homes would be for the house owners.
+
 
 
 
