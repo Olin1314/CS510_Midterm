@@ -18,3 +18,5 @@ The first package that will be used in this project is mlr3data, which offers th
 Based on the codes, a priority list for boosting home value should contain the following two things:
 1.Try to maintain the house in a good condition and add more custom design so that it can be graded higher.
 2.Try to expand the space of living room in the house.
+
+Ones can compare the codes outputs of .Rmd file with the outputs of **Updated_Mid Project_Home values.pdf**. 
