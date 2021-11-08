@@ -1,0 +1,22 @@
+Partitioned the dataset in which 70% are used as train sets and 30% are used as test sets. And in order to make our results consistent every time we run the data, I set a seed of 913 to remove the sampling randomness.
+
+```{r test-train split}
+# Test-Train split
+set.seed(913)
+house_idx = createDataPartition(house$price, p = 0.7, list = FALSE)
+house_trn = house[house_idx, ]
+house_tst = house[-house_idx, ]
+```
+
+Trained random forest models using all the predictors in the `house` dataset with `price` as response variable. The default tuning parameters chosen by the `caret` package would be used.
+
+```{r train rf, eval=FALSE, include=TRUE}
+# Tune a random forest model without normalizing predictors
+set.seed(913)
+rf_unscale_mod = train(
+  price ~ ., data = house_trn,
+  trControl = trainControl(method = "cv", number = 5),
+  method = "rf"
+)
+```
+
