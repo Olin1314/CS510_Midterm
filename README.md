@@ -14,9 +14,6 @@ A real-world dataset that contains house sale price information and the correspo
 ## Packages 
 The first package that will be used in this project is mlr3data, which offers the dataset that we are going to analyze. Besides, we will use the ggplot2 and lattice packages for the purpose of data visualization and randomForest for random forest models that can be helpful to analyze the effects of the house factors on the house price. Also, we will utilize the stargazer package to offer neat and more readable model results of linear regressions. Anotehr important package that can be useful in this project is GGally, in which the ggcorr function can help us obtain the correlation matrix. Finally, we also use the dplyr package to manipulate and modify data frames.
 
-## Test  
-Open and run the codes of **Testthat.Rmd**.
-
 ## Conclusion
 Based on the codes, a priority list for boosting home value should contain the following two things:
 1.Try to maintain the house in a good condition and add more custom design so that it can be graded higher.
