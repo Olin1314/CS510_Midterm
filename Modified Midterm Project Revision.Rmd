@@ -31,7 +31,7 @@ library(kableExtra)
 ```
 
 ```{r map, echo=FALSE, fig.cap = "Map of King County, Washington", fig.align = "center"}
-include_graphics("./img/king_county_map.png")
+include_graphics("king_county_map.png")
 ```
 
 The strong local economy has been driving the increase in the number of households in this area, which has been creating the demand from the real estate market. The graphic below displays the right-skewed distribution of house sale prices in the time window we analyzed. The house price in King County ranges from *$75,000* to *$7,700,000*, and the average price is slightly above *$540,000*.  
