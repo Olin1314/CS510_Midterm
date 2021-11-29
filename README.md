@@ -6,7 +6,7 @@ The primary objective of this project is to find out a priority list for home im
 ## How to Run
 Copy this repository and open **MidtProject.Rproj** in RStudio. 
 
-Open **Modified Midterm Project Revision.Rmd**. Proceed to install all associated libraries and run each file. While running the file, we may face some errors such as **"Error: package or namespace load failed for ‘kableExtra’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]): there is no package called ‘systemfonts’"**, after installing all the required packages, everything should work well. 
+Open **Modified Midterm Project Revision.Rmd**. Proceed to install all associated libraries and run each file. While running the file, we may face some errors such as **"Error: package or namespace load failed for ‘kableExtra’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]): there is no package called ‘systemfonts’"**, after installing all the required packages, everything should work well. If we fail to install some packages because of different versions of RStudio, the packages of **knitr** and **kableExtra** are also considered to help us generate a neat and well-formatted final document via R markdown.
 
 In addition, we will need to upload the **king_county_map.png** for the line 34 **"include_graphics("king_county_map.png")"**.
 
