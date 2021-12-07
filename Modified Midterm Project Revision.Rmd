@@ -2,13 +2,14 @@
 title: "A Statistician's Priority List for Boosting Home Value"
 theme: simplex
 output:
-  word_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 ## Introduction
 
-For many people, a house is not only a residence but also a place where they have been investing throughout their stay. Hence, how to maintain and boost home value during their stay has been a question for many house owners. Generally speaking, there are many commonly known factors that would help increase home values, however, for most people with a limited budget, it is hard to take everything into consideration when they want to boost their home values. Therefore, it is of great significance to learn what should be prioritized during the home improvement with a purpose of value boost. Although home onwers are unable to obtain everything they want with a tight budget, they can do the things that really matter and bring up the sale prices of the house by prioritizing the controllable things. To obtain a priority list for house improvement and home value bringing up, statistical methods like linear regression and random forest would be utilized in this project to analyze a Kaggle dataset containing house sale prices of King County, Washington from May 2014 to May 2015. Statistical models would be constructed to find out the most significant house attributes that are related to home prices. 
+For many people, a house is not only a residence but also a place where they have been investing throughout their stay. Hence, how to maintain and boost home value during their stay has been a question for many house owners. Generally speaking, there are many commonly known factors that would help increase home values, however, for most people with a limited budget, it is hard to take everything into consideration when they want to boost their home values. Therefore, it is of great significance to learn what should be prioritized during the home improvement with a purpose of value boost. Although home owners are unable to obtain everything they want with a tight budget, they can do the things that really matter and bring up the sale prices of the house by prioritizing the controllable things. To obtain a priority list for house improvement and home value bringing up, statistical methods like linear regression and random forest would be utilized in this project to analyze a Kaggle dataset containing house sale prices of King County, Washington from May 2014 to May 2015. Statistical models would be constructed to find out the most significant house attributes that are related to home prices. 
 
 ## Purpose
 
@@ -41,21 +42,21 @@ The strong local economy has been driving the increase in the number of househol
 
 A real-world dataset that contains house sale price information and the corresponding house features of King County, Washington from 2014 to 2015 will be used. It is originated from Kaggle, and can be imported to R from `mlr3data` package. 
 
-Basically, there are 21,613 observations along with 19 house features such as the number of bathrooms, bedrooms, floors, and square footage of the housein the original data. The code that help us load the data and print the fisrt few lines of the original data is shown as below
+Basically, there are 21,613 observations along with 19 house features such as the number of bathrooms, bedrooms, floors, and square footage of the house in the original data. The code that help us load the data and print the first few lines of the original data is shown as below
 
-```{r}
+```{r include = TRUE,warning=FALSE}
 ## Load the required dataset
 library(mlr3data)
 data("kc_housing")
 head(kc_housing)
 ```
 
-```{r}
+```{r include = FALSE,warning=FALSE}
 ## Print out the summary statistics
 summary(kc_housing)
 ```
 
-```{r}
+```{r include = FALSE,warning=FALSE}
 ## Print out the data dimensions
 dim(kc_housing)
 ```
@@ -119,7 +120,7 @@ And after receiving the feedback on the first draft of the project, I decide to 
 
 Also, the packages of `knitr` and `kableExtra` are also considered to help us generate a neat and well-formatted final document via R markdown.
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE,include=FALSE}
 ## Load the required packages
 library(ggplot2)
 library(lattice)
@@ -132,17 +133,17 @@ library(knitr)
 library(kableExtra)
 ```
 
-## Exploratory Data Analysis
+## Exploratory Data Analysis (EDA)
 
 We start our data exploration with the variable of interest `price`.
 
-```{r EDA - Price, fig.align = "center"}
+```{r EDA - Price, fig.align = "center",message=FALSE, warning=FALSE,include=TRUE,}
 # Check the distribution of house sale price
 qplot(x = price, data = kc_housing, bins = 50,
       main = "King County House Sale Prices")
 ```
 
-```{r summary}
+```{r summary,message=FALSE, warning=FALSE,include=TRUE,}
 # 5-point summary of price
 summary(kc_housing$price)
 ```
@@ -151,7 +152,7 @@ It is clear that the distribution of the home price is positively skewed with a 
 
 Next, we explore the relationship between the features of the house and the home prices by plotting `price` with each feature. We find that some features like  `bathrooms`, `sqft_living`, `grade` and `waterfront` have relatively stronger relationships with `price` than others. 
 
-```{r graphs, message=FALSE, warning=FALSE}
+```{r graphs, message=FALSE, warning=FALSE,include=TRUE}
 # Create scatterplot for price and bathrooms
 ggplot(kc_housing, aes(x = bathrooms, y = price)) +
   geom_point(shape = 1) +
@@ -176,7 +177,7 @@ ggplot(kc_housing, aes(x = waterfront, y = price)) +
 
 We also include the correlation matrix that reflects how variables are correlated with each other.
 
-```{r correlation matrix, fig.height = 10, fig.width = 15, message = FALSE, warning = FALSE, fig.align = "center"}
+```{r correlation matrix, fig.height = 10, fig.width = 15, message = FALSE, warning = FALSE,include=TRUE, fig.align = "center"}
 # Correlation matrix for numeric variables
 ggcorr(kc_housing[, -c(1:2)], method = c("everything","pearson"))
 ```
@@ -195,7 +196,7 @@ Based on above findings, we will modify our dataset by introducing two new binar
 
 We also exclude the useless information from the original set and remain the variables that are most relevant to the house price. Moreover, we would drop the variables of sqft_above and sqft_living15 in the further analysis to avoid the issue of multicollinearity. The new modified version of the dataset is named as house, and it’s summary statistics are printed.
 
-```{r  message=FALSE, warning=FALSE}
+```{r  message=FALSE, warning=FALSE, include=TRUE}
 # Create new variable "renovated" based on the existing variable "yr_renovated"
 kc_housing$renovated = as.factor(ifelse(kc_housing$yr_renovated > 0, "1", "0"))
 # Create new variable "basemt" based on the existing variable "sqft_basement"
@@ -243,7 +244,7 @@ summary(house)
 
 Before fitting the models, we partitioned the dataset in which 70% are used as train sets and 30% are used as test sets. And in order to make our results consistent every time we run the data, I set a seed of 913 to remove the sampling randomness.
 
-```{r test-train split}
+```{r test-train split,message=FALSE, warning=FALSE,include=FALSE}
 # Test-Train split
 set.seed(913)
 house_idx = createDataPartition(house$price, p = 0.7, list = FALSE)
@@ -268,7 +269,7 @@ rmse = function(actual, predicted) {
 
 First, we trained random forest models using all the predictors in the `house` dataset with `price` as response variable. The default tuning parameters chosen by the `caret` package would be used.
 
-```{r train rf, eval=FALSE, include=TRUE}
+```{r train rf, eval=FALSE, include=FALSE}
 # Tune a random forest model without normalizing predictors
 set.seed(913)
 rf_unscale_mod = train(
@@ -280,7 +281,7 @@ rf_unscale_mod = train(
 
 The best random forest model with scaling uses 7 for `mtry`, meaning that 7 features will be randomly chosen every time a tree is grown. The number of trees is 500 by default. We find that about 88% of the variation in prices can be explained by this model. 
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE }
 ## Fit the best random forest model
 rf_mod = randomForest(price ~ .,
                       data = house_trn,
@@ -319,7 +320,7 @@ It turns out that the `grade` (ranging from 1 to 13), which represents the const
 
 Although, we learned the effects of location on house price are likely to be significant, we are not going to interpret them in the multiple linear regression model because location is not a factor that could be changed for home owners after the house being purchased. Hence, in this linear model, only the variables of `grade`, `sqft_living`, `view`, `waterfront` and `bathrooms` will be included.
 
-```{r  message=FALSE, warning=FALSE}
+```{r  message=TRUE, warning=TRUE,include=TRUE}
 ## Fit the linear regression model
 lm.mod = lm(log(price) ~ grade + sqft_living + view + bathrooms +
               waterfront, data = house_trn)
@@ -353,6 +354,17 @@ lm.rmse
 
 The reported test rmses for random forest model is 322215.6 and for the linear regression model is 351018.4. That means the best random forest model we found by `caret` performs better in predicting than the linear model. So we decide this as a better model that can help us predict the house values.
 
+## Limitations
+
+The first limitation of this project comes from the fact that some unchangable external factors such as the location of the house and the real estate market such as unexpected economic crisis could impact the house price unwantedly, even if the priority list is completed by the owner.
+
+Besides, it is quite time consuming to tuning the parameters in the random forest model, which limited my attempts of a wider range of possible values in the parameters should be tuned. That means, the random forest model may still be improved if we can take more time and tuning more models.
+
+Thirdly, we only considered two methods in predicting the house price so there may be better models using different methods.
+
+Lastly, we should notice that the omitted variable biases may still exist, and there are other potential factors that are not included in the data may also affect the home values significantly.
+
+
 ## Conclusion
 
 In conclusion, from a view of statistician, a priority list for boosting home value should contain the following two things:
@@ -363,16 +375,6 @@ In conclusion, from a view of statistician, a priority list for boosting home va
 
 And if we want to use the easily collected house features to predict the house prices, a random forest model with 7 features being selected per tree and considers 500 trees at one time is recommended. Although it may not be precise, it can offer a general idea of how valuable the homes would be for the house owners.
 
-
-## Limitations
-
-The first limitation of this project comes from the fact that some unchangable external factors such as the location of the house and the real estate market such as unexpected economic crisis could impact the house price unwantedly, even if the priority list is completed by the owner.
-
-Besides, it is quite time consuming to tuning the parameters in the random forest model, which limited my attempts of a wider range of possible values in the parameters should be tuned. That means, the random forest model may still be improved if we can take more time and tuning more models.
-
-Thirdly, we only considered two methods in predicting the house price so there may be better models using different methods.
-
-Lastly, we should notice that the omitted variable biases may still exist, and there are other potential factors that are not included in the data may also affect the home values significantly.
 
 
 
