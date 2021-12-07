@@ -21,4 +21,4 @@ Based on the codes, a priority list for boosting home value should contain the f
 1.Try to maintain the house in a good condition and add more custom design so that it can be graded higher.
 2.Try to expand the space of living room in the house.
 
-We can compare the codes outputs of **Modified Midterm Project Revision.Rmd** with the outputs of **Modified_Mid Project_Home Values.pdf**. 
+We can get the final version via reading  **Midterm Report_Home Values_Olin.pdf**. 
