@@ -22,3 +22,5 @@ Based on the codes, a priority list for boosting home value should contain the f
 2.Try to expand the space of living room in the house.
 
 We can get the final version via reading  **Project_Home Values_Olin.pdf**. 
+
+The final report is **Final Report_Olin**.
