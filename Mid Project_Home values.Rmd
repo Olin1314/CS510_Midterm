@@ -1,5 +1,5 @@
 ---
-title: "A Statistician's Priority List for Boosting Home Value"
+title: "The Priority List of Statiscians for Boosting Home Value"
 theme: simplex
 output:
   word_document: default
